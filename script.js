@@ -17,5 +17,6 @@ function onSuccess(position)
 }
 
 function onError(error) {
+
     alert(error.message);
 }
