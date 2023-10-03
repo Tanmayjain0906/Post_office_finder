@@ -1,6 +1,6 @@
 if(localStorage.getItem("location"))
 {
-    window.location.href = "./getStarted/index.html";
+    window.location.href = "./get.html";
 }
 
 navigator.geolocation.getCurrentPosition(onSuccess, onError);
@@ -13,7 +13,7 @@ function onSuccess(position)
         long: longitude
     }
     localStorage.setItem("location",JSON.stringify(location));
-    window.location.href = "./getStarted/index.html";
+    window.location.href = "./get.html";
 }
 
 function onError(error) {

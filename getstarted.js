@@ -19,14 +19,14 @@ function onSuccess(position) {
 function onError(error) {
 
     alert(error.message);
-    window.location.href = "../index.html";
+    window.location.href = "./index.html";
     localStorage.removeItem("location");
     localStorage.removeItem("ip");
 }
 
 if (!localStorage.getItem("location")) {
     alert("Please Allow Permission");
-    window.location.href = "../index.html";
+    window.location.href = "./index.html";
 }
 
 const bold = document.getElementById("ip-address");
@@ -48,6 +48,6 @@ const btn = document.getElementById("get-started");
 
 btn.addEventListener("click", () => {
     localStorage.setItem("ip", ip);
-    window.location.href = "./PostOffice/index.html";
+    window.location.href = "./post.html";
 })
 

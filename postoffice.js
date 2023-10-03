@@ -13,7 +13,7 @@ function onSuccess(position)
 function onError(error) {
 
     alert(error.message);
-    window.location.href = "../index.html";
+    window.location.href = "./index.html";
     localStorage.removeItem("location");
     localStorage.removeItem("ip");
     localStorage.removeItem("token");
