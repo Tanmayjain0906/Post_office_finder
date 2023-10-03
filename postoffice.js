@@ -12,7 +12,7 @@ function onSuccess(position)
 
 function onError(error) {
 
-    alert(error.message);
+    
     window.location.href = "./index.html";
     localStorage.removeItem("location");
     localStorage.removeItem("ip");
@@ -36,6 +36,8 @@ const pincode = document.getElementById("pincode");
 const cardContainer = document.getElementsByClassName("card-container")[0];
 const mapContainer = document.getElementsByClassName("map")[0];
 const message = document.getElementById("message");
+const date = document.getElementById("date-time");
+const timeZone = document.getElementById("time-zone");
 
 async function fetchInfoData()
 {
@@ -58,6 +60,8 @@ function addDataToUi(data)
   org.innerText = data.org;
   hostname.innerText = data.hostname?data.hostname:"N/A";
   pincode.innerText = data.postal;
+  timeZone.innerText = data.timezone;
+  date.innerText = new Date().toLocaleString("en-US", { timeZone: `${data.timezone}` });
 
   mapContainer.innerHTML = ` <h1>Your Current Location</h1>
   <iframe src="https://maps.google.com/maps?q=${userlocation.lat}, ${userlocation.long}&z=15&output=embed" width="100%" height="550px" frameborder="0" style="border:0"></iframe>`
@@ -72,6 +76,7 @@ async function fetchPostalData(userPincode)
     let response = await fetch(url);
     let data = await response.json();
 
+    message.innerText = data[0].Message;
     addDataToCard(data[0].PostOffice);
 }
 
@@ -89,7 +94,7 @@ function addDataToCard(data)
 
     cardContainer.appendChild(div);
   })
-  message.innerText = `${data.length} Post Office Found`
+ 
 }
 
 function search()
