@@ -35,6 +35,7 @@ const hostname = document.getElementById("host");
 const pincode = document.getElementById("pincode");
 const cardContainer = document.getElementsByClassName("card-container")[0];
 const mapContainer = document.getElementsByClassName("map")[0];
+const message = document.getElementById("message");
 
 async function fetchInfoData()
 {
@@ -55,7 +56,7 @@ function addDataToUi(data)
   city.innerText = data.city;
   region.innerText = data.region;
   org.innerText = data.org;
-  hostname.innerText = data.hostname;
+  hostname.innerText = data.hostname?data.hostname:"N/A";
   pincode.innerText = data.postal;
 
   mapContainer.innerHTML = ` <h1>Your Current Location</h1>
@@ -88,4 +89,29 @@ function addDataToCard(data)
 
     cardContainer.appendChild(div);
   })
+  message.innerText = `${data.length} Post Office Found`
+}
+
+function search()
+{
+  let searchInput = document.getElementById("search").value.toUpperCase().trim();
+  
+  
+  let card = document.getElementsByClassName("card");
+  console.log(card[0].children[0]);
+
+  for(let i=0;i<card.length;i++)
+  {
+    let name = card[i].children[0];
+    let nameText = name.innerText.toUpperCase();
+
+    if(nameText.indexOf(searchInput) > -1)
+    {
+      card[i].style.display = "";
+    }
+    else
+    {
+      card[i].style.display = "none";
+    }
+  }
 }
