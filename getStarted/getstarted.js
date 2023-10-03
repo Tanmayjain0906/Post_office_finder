@@ -48,6 +48,6 @@ const btn = document.getElementById("get-started");
 
 btn.addEventListener("click", () => {
     localStorage.setItem("ip", ip);
-    window.location.href = "../PostOffice/index.html";
+    window.location.href = "/PostOffice/index.html";
 })
 
