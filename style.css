@@ -40,3 +40,8 @@ header
     align-items: center;
     height: 98vh;
 }
+
+.per
+{
+    color: red;
+}
